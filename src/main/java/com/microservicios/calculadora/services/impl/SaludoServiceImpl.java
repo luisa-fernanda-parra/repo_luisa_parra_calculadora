@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 @Service
 public class SaludoServiceImpl implements InterfazSaludoService {
@@ -35,18 +36,11 @@ public class SaludoServiceImpl implements InterfazSaludoService {
 
     @Override
     public ResponseEntity getOperaciones(){
-        String mensaje = "Las operaciones disponibles son: "+
-                "\n"+configCalculadora.getValorOperacion(ConfigCalculadora.SUMA)+
-                "\n"+configCalculadora.getValorOperacion(ConfigCalculadora.RESTA)+
-                "\n"+configCalculadora.getValorOperacion(ConfigCalculadora.MULTIPLICACION)+
-                "\n"+configCalculadora.getValorOperacion(ConfigCalculadora.DIVISION)+
-                "\n"+configCalculadora.getValorOperacion(ConfigCalculadora.FACTORIAL)+
-                "\n"+configCalculadora.getValorOperacion(ConfigCalculadora.MULTIPLOS)+
-                "\n"+configCalculadora.getValorOperacion(ConfigCalculadora.COSENO)+
-                "\n"+configCalculadora.getValorOperacion(ConfigCalculadora.RAIZ_CUADRADA)+
-                "\n"+configCalculadora.getValorOperacion(ConfigCalculadora.AREA_CIRCULO)+
-                "\n"+configCalculadora.getValorOperacion(ConfigCalculadora.VOLUMEN_ESFERA)+
-                "\n"+configCalculadora.getValorOperacion(ConfigCalculadora.ECUACION_CUADRATICA);
+        String mensaje = "Operaciones disponibles:";
+        ArrayList<String> listaOperaciones = new ArrayList<>(configCalculadora.getCalculadora().values());
+        for(String i:listaOperaciones){
+            mensaje += "\n" + i;
+        }
         return ResponseEntity.ok(mensaje);
     }
 }

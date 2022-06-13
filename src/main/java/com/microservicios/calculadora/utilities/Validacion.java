@@ -1,7 +1,7 @@
-package com.microservicios.calculadora.services.impl;
+package com.microservicios.calculadora.utilities;
 
 public class Validacion {
-
+    
     public static boolean esNumero(String num){
         boolean esNumero = true;
         int contadorPunto = 0;
@@ -32,5 +32,5 @@ public class Validacion {
         }
         return esNumero;
     }
-
+    
 }
