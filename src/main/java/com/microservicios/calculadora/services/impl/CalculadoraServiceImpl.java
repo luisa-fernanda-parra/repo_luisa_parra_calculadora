@@ -1,5 +1,6 @@
 package com.microservicios.calculadora.services.impl;
 
+import com.microservicios.calculadora.constants.AppConstants;
 import com.microservicios.calculadora.services.InterfazCalculadoraService;
 import com.microservicios.calculadora.utilities.Validacion;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +15,7 @@ public class CalculadoraServiceImpl implements InterfazCalculadoraService {
             double resultado = Double.parseDouble(num1) + Double.parseDouble(num2);
             mensaje = num1+" + "+num2+" = "+resultado;
         }else{
-            mensaje = "Entrada no válida";
+            mensaje = AppConstants.ENTRADA_INVALIDA;
         }
         return ResponseEntity.ok(mensaje);
     }
@@ -25,7 +26,7 @@ public class CalculadoraServiceImpl implements InterfazCalculadoraService {
             double resultado = Double.parseDouble(num1) - Double.parseDouble(num2);
             mensaje = num1+" - "+num2+" = "+resultado;
         }else{
-            mensaje = "Entrada no válida";
+            mensaje = AppConstants.ENTRADA_INVALIDA;
         }
         return ResponseEntity.ok(mensaje);
     }
@@ -36,7 +37,7 @@ public class CalculadoraServiceImpl implements InterfazCalculadoraService {
             double resultado = Double.parseDouble(num1) * Double.parseDouble(num2);
             mensaje = num1+" * "+num2+" = "+resultado;
         }else{
-            mensaje = "Entrada no válida";
+            mensaje = AppConstants.ENTRADA_INVALIDA;
         }
         return ResponseEntity.ok(mensaje);
     }
@@ -45,13 +46,13 @@ public class CalculadoraServiceImpl implements InterfazCalculadoraService {
         String mensaje = "";
         if(Validacion.esNumero(num1) && Validacion.esNumero(num2)){
             if(Double.parseDouble(num2)==0){
-                mensaje = "ERROR! División por cero";
+                mensaje = AppConstants.DIVISION_POR_CERO;
             }else{
                 double resultado = Double.parseDouble(num1) / Double.parseDouble(num2);
                 mensaje = num1+" / "+num2+" = "+resultado;
             }
         }else{
-            mensaje = "Entrada no válida";
+            mensaje = AppConstants.ENTRADA_INVALIDA;
         }
         return ResponseEntity.ok(mensaje);
     }

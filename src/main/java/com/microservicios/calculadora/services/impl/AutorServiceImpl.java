@@ -54,27 +54,27 @@ public class AutorServiceImpl implements IAutorService {
     }
 
     @Override
-    public ResponseEntity listarAutPorFechaCJpql(String a, String m, String d){
+    public ResponseEntity listarAutPorFechaCJpql(String year, String month, String day){
         ResponseEntity response;
-        if(Validacion.esNumero(a) && Validacion.esNumero(m) && Validacion.esNumero(d)){
-            GregorianCalendar fechaCalendar = new GregorianCalendar(Integer.parseInt(a), Integer.parseInt(m)-1, Integer.parseInt(d));
+        if(Validacion.esNumero(year) && Validacion.esNumero(month) && Validacion.esNumero(day)){
+            GregorianCalendar fechaCalendar = new GregorianCalendar(Integer.parseInt(year), Integer.parseInt(month)-1, Integer.parseInt(day));
             Date fecha = fechaCalendar.getTime();
             response = ResponseEntity.ok(autorRepository.buscarPorFechaCJpql(fecha));
         }else{
-            response = ResponseEntity.ok("Entrada no valida");
+            response = ResponseEntity.ok(AppConstants.ENTRADA_INVALIDA);
         }
         return response;
     }
 
     @Override
-    public ResponseEntity listarAutPorFechaCJpaRepository(String a, String m, String d){
+    public ResponseEntity listarAutPorFechaCJpaRepository(String year, String month, String day){
         ResponseEntity response;
-        if(Validacion.esNumero(a) && Validacion.esNumero(m) && Validacion.esNumero(d)){
-            GregorianCalendar fechaCalendar = new GregorianCalendar(Integer.parseInt(a), Integer.parseInt(m)-1, Integer.parseInt(d));
+        if(Validacion.esNumero(year) && Validacion.esNumero(month) && Validacion.esNumero(day)){
+            GregorianCalendar fechaCalendar = new GregorianCalendar(Integer.parseInt(year), Integer.parseInt(month)-1, Integer.parseInt(day));
             Date fecha = fechaCalendar.getTime();
             response = ResponseEntity.ok(autorRepository.findByFechaCreacion(fecha));
         }else{
-            response = ResponseEntity.ok("Entrada no valida");
+            response = ResponseEntity.ok(AppConstants.ENTRADA_INVALIDA);
         }
         return response;
     }
@@ -90,7 +90,7 @@ public class AutorServiceImpl implements IAutorService {
         if(Validacion.esNumero(id)){
             response = ResponseEntity.ok(autorRepository.buscarPorIdJpql(Long.parseLong(id)));
         }else{
-            response = ResponseEntity.ok("Entrada no válida");
+            response = ResponseEntity.ok(AppConstants.ENTRADA_INVALIDA);
         }
         return response;
     }
@@ -101,7 +101,7 @@ public class AutorServiceImpl implements IAutorService {
         if(Validacion.esNumero(id)){
             response = ResponseEntity.ok(autorRepository.findById(Long.parseLong(id)));
         }else{
-            response = ResponseEntity.ok("Entrada no válida");
+            response = ResponseEntity.ok(AppConstants.ENTRADA_INVALIDA);
         }
         return response;
     }
@@ -110,14 +110,14 @@ public class AutorServiceImpl implements IAutorService {
     public ResponseEntity actualizarAutor(Long id, AutorDTO autorDTO){
         String mensaje;
         var autorOptional = autorRepository.findById(id);
-        if(autorOptional.isEmpty()){
-            mensaje = "El autor no existe";
-        }else {
+        if(autorOptional.isPresent()){
             AutorEntity autorEntity = autorOptional.get();
             autorEntity.setNombre(autorDTO.getNombre());
             autorEntity.setApellido(autorDTO.getApellido());
             autorRepository.save(autorEntity);
             mensaje = AppConstants.ACTUALIZACION_EXITOSA;
+        }else {
+            mensaje = AppConstants.ACTUALIZACION_FALLIDA;
         }
         return ResponseEntity.ok(mensaje);
     }

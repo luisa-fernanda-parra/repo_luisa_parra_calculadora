@@ -18,9 +18,9 @@ public interface IAutorService {
 
     ResponseEntity listarAutPorFechaCNativeQuery(String fecha);
 
-    ResponseEntity listarAutPorFechaCJpql(String a, String m, String d);
+    ResponseEntity listarAutPorFechaCJpql(String year, String month, String day);
 
-    ResponseEntity listarAutPorFechaCJpaRepository(String a, String m, String d);
+    ResponseEntity listarAutPorFechaCJpaRepository(String year, String month, String day);
 
     ResponseEntity listarAutPorIdNativeQuery(String id);
 

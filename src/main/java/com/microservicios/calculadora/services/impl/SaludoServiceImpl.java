@@ -1,6 +1,7 @@
 package com.microservicios.calculadora.services.impl;
 
 import com.microservicios.calculadora.config.ConfigCalculadora;
+import com.microservicios.calculadora.constants.AppConstants;
 import com.microservicios.calculadora.controller.SaludoController;
 import com.microservicios.calculadora.services.InterfazSaludoService;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +30,7 @@ public class SaludoServiceImpl implements InterfazSaludoService {
         }else if(horaNum >= 19 && horaNum <= 23 || horaNum >= 0 && horaNum < 6){
             mensaje = configCalculadora.getValorSaludo(ConfigCalculadora.NOCHE);
         }else{
-            mensaje = "El número ingresado no es válido";
+            mensaje = AppConstants.ENTRADA_INVALIDA;
         }
         return ResponseEntity.ok(mensaje);
     }

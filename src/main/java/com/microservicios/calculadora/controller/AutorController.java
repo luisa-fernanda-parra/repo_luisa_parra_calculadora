@@ -46,14 +46,14 @@ public class AutorController {
         return iAutorService.listarAutPorFechaCNativeQuery(fecha);
     }
 
-    @GetMapping("/listar-autores-por-fecha-creacion/jpql/{a}/{m}/{d}")
-    public ResponseEntity listarAutPorFechaCJpql(@PathVariable String a, @PathVariable String m, @PathVariable String d){
-        return iAutorService.listarAutPorFechaCJpql(a, m, d);
+    @GetMapping("/listar-autores-por-fecha-creacion/jpql/{year}/{month}/{day}")
+    public ResponseEntity listarAutPorFechaCJpql(@PathVariable String year, @PathVariable String month, @PathVariable String day){
+        return iAutorService.listarAutPorFechaCJpql(year, month, day);
     }
 
-    @GetMapping("/listar-autores-por-fecha-creacion/jpa-repository/{a}/{m}/{d}")
-    public ResponseEntity listarAutPorFechaCJpaRepository(@PathVariable String a, @PathVariable String m, @PathVariable String d){
-        return iAutorService.listarAutPorFechaCJpaRepository(a, m, d);
+    @GetMapping("/listar-autores-por-fecha-creacion/jpa-repository/{year}/{month}/{day}")
+    public ResponseEntity listarAutPorFechaCJpaRepository(@PathVariable String year, @PathVariable String month, @PathVariable String day){
+        return iAutorService.listarAutPorFechaCJpaRepository(year, month, day);
     }
 
     @GetMapping("/listar-autor-por-id/native-query/{id}")
