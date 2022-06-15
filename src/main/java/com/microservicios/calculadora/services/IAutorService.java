@@ -1,5 +1,6 @@
 package com.microservicios.calculadora.services;
 
+import com.microservicios.calculadora.dto.AutorDTO;
 import com.microservicios.calculadora.model.AutorEntity;
 import org.springframework.http.ResponseEntity;
 
@@ -26,5 +27,7 @@ public interface IAutorService {
     ResponseEntity listarAutPorIdJpql(String id);
 
     ResponseEntity listarAutPorIdJpaRepository(String id);
+
+    ResponseEntity actualizarAutor(Long id, AutorDTO autorDTO);
 
 }

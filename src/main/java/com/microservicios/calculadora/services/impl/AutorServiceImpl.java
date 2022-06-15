@@ -1,5 +1,7 @@
 package com.microservicios.calculadora.services.impl;
 
+import com.microservicios.calculadora.constants.AppConstants;
+import com.microservicios.calculadora.dto.AutorDTO;
 import com.microservicios.calculadora.model.AutorEntity;
 import com.microservicios.calculadora.repository.AutorRepository;
 import com.microservicios.calculadora.services.IAutorService;
@@ -102,6 +104,22 @@ public class AutorServiceImpl implements IAutorService {
             response = ResponseEntity.ok("Entrada no válida");
         }
         return response;
+    }
+
+    @Override
+    public ResponseEntity actualizarAutor(Long id, AutorDTO autorDTO){
+        String mensaje;
+        var autorOptional = autorRepository.findById(id);
+        if(autorOptional.isEmpty()){
+            mensaje = "El autor no existe";
+        }else {
+            AutorEntity autorEntity = autorOptional.get();
+            autorEntity.setNombre(autorDTO.getNombre());
+            autorEntity.setApellido(autorDTO.getApellido());
+            autorRepository.save(autorEntity);
+            mensaje = AppConstants.ACTUALIZACION_EXITOSA;
+        }
+        return ResponseEntity.ok(mensaje);
     }
 
 }

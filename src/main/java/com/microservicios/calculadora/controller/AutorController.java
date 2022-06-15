@@ -1,5 +1,6 @@
 package com.microservicios.calculadora.controller;
 
+import com.microservicios.calculadora.dto.AutorDTO;
 import com.microservicios.calculadora.model.AutorEntity;
 import com.microservicios.calculadora.services.IAutorService;
 import org.springframework.http.ResponseEntity;
@@ -70,5 +71,9 @@ public class AutorController {
         return iAutorService.listarAutPorIdJpaRepository(id);
     }
 
+    @PutMapping("/actualizar-nombre-apellido/{id}")
+    public ResponseEntity actualizarAutor(@PathVariable Long id, @RequestBody AutorDTO autorDTO){
+        return iAutorService.actualizarAutor(id, autorDTO);
+    }
 
 }
