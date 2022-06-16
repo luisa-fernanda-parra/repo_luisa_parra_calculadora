@@ -7,7 +7,6 @@ public class AutorDTO {
     private String apellido;
 
     public AutorDTO(){
-
     }
 
     public AutorDTO(String nombre, String apellido) {

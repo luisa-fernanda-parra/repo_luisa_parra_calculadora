@@ -17,4 +17,5 @@ public interface InterfazCalculaCientifService {
     ResponseEntity getVolumenEsf(String radio);
 
     ResponseEntity getEcuacionCuad(String a, String b, String c);
+
 }

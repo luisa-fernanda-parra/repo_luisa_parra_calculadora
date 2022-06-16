@@ -23,7 +23,6 @@ public class AutorEntity {
     private Date fechaEliminacion;
 
     public AutorEntity(){
-
     }
 
     public AutorEntity(Long id, String nombre, String apellido, Date fechaCreacion, Date fechaEliminacion ){

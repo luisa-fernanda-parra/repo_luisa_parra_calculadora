@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Objects;
 
 @Service
 public class AutorServiceImpl implements IAutorService {
@@ -118,6 +119,38 @@ public class AutorServiceImpl implements IAutorService {
             mensaje = AppConstants.ACTUALIZACION_EXITOSA;
         }else {
             mensaje = AppConstants.ACTUALIZACION_FALLIDA;
+        }
+        return ResponseEntity.ok(mensaje);
+    }
+
+    @Override
+    public ResponseEntity deleteHard(Long id) {
+        String mensaje;
+        var autorOptional = autorRepository.findById(id);
+        if(autorOptional.isPresent()){
+            autorRepository.delete(autorOptional.get());
+            mensaje = AppConstants.BORRADO_EXITOSO;
+        }else{
+            mensaje = AppConstants.BORRADO_FALLIDO;
+        }
+        return ResponseEntity.ok(mensaje);
+    }
+
+    @Override
+    public ResponseEntity deleteLogic(Long id) {
+        String mensaje;
+        var autorOptional = autorRepository.findById(id);
+        if(autorOptional.isPresent()){
+            AutorEntity autorEntity = autorOptional.get();
+            if(Objects.isNull(autorEntity.getFechaEliminacion())){
+                autorEntity.setFechaEliminacion(new Date());
+                autorRepository.save(autorEntity);
+                mensaje = AppConstants.BORRADO_LOGICO_EXITOSO;
+            }else{
+                mensaje = AppConstants.BORRADO_LOGICO_FALLIDO;
+            }
+        }else{
+            mensaje = AppConstants.REGISTRO_INEXISTENTE;
         }
         return ResponseEntity.ok(mensaje);
     }

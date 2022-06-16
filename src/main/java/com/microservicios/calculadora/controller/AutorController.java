@@ -6,6 +6,8 @@ import com.microservicios.calculadora.services.IAutorService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
+
 @RestController
 @RequestMapping("/autor")
 public class AutorController {
@@ -46,13 +48,13 @@ public class AutorController {
         return iAutorService.listarAutPorFechaCNativeQuery(fecha);
     }
 
-    @GetMapping("/listar-autores-por-fecha-creacion/jpql/{year}/{month}/{day}")
-    public ResponseEntity listarAutPorFechaCJpql(@PathVariable String year, @PathVariable String month, @PathVariable String day){
+    @GetMapping("/listar-autores-por-fecha-creacion/jpql")
+    public ResponseEntity listarAutPorFechaCJpql(@PathParam("year") String year, @PathParam("month") String month, @PathParam("day") String day){
         return iAutorService.listarAutPorFechaCJpql(year, month, day);
     }
 
-    @GetMapping("/listar-autores-por-fecha-creacion/jpa-repository/{year}/{month}/{day}")
-    public ResponseEntity listarAutPorFechaCJpaRepository(@PathVariable String year, @PathVariable String month, @PathVariable String day){
+    @GetMapping("/listar-autores-por-fecha-creacion/jpa-repository")
+    public ResponseEntity listarAutPorFechaCJpaRepository(@PathParam("year") String year, @PathParam("month") String month, @PathParam("day") String day){
         return iAutorService.listarAutPorFechaCJpaRepository(year, month, day);
     }
 
@@ -74,6 +76,16 @@ public class AutorController {
     @PutMapping("/actualizar-nombre-apellido/{id}")
     public ResponseEntity actualizarAutor(@PathVariable Long id, @RequestBody AutorDTO autorDTO){
         return iAutorService.actualizarAutor(id, autorDTO);
+    }
+
+    @DeleteMapping("/borrar-autor/{id}")
+    public ResponseEntity deleteHard(@PathVariable Long id){
+        return iAutorService.deleteHard(id);
+    }
+
+    @PutMapping("/borrar-autor-logico/{id}")
+    public ResponseEntity deleteLogic(@PathVariable Long id){
+        return iAutorService.deleteLogic(id);
     }
 
 }

@@ -31,4 +31,5 @@ public interface AutorRepository extends JpaRepository<AutorEntity,Long> {
     AutorEntity buscarPorIdJpql(long id);
 
     AutorEntity findById(long id);
+
 }

@@ -30,4 +30,8 @@ public interface IAutorService {
 
     ResponseEntity actualizarAutor(Long id, AutorDTO autorDTO);
 
+    ResponseEntity deleteHard(Long id);
+
+    ResponseEntity deleteLogic(Long id);
+
 }

@@ -36,12 +36,13 @@ public class SaludoServiceImpl implements InterfazSaludoService {
     }
 
     @Override
-    public ResponseEntity getOperaciones(){
+    public ResponseEntity getOperaciones() {
         String mensaje = "Operaciones disponibles:";
         ArrayList<String> listaOperaciones = new ArrayList<>(configCalculadora.getCalculadora().values());
-        for(String i:listaOperaciones){
+        for (String i : listaOperaciones) {
             mensaje += "\n" + i;
         }
         return ResponseEntity.ok(mensaje);
     }
+
 }

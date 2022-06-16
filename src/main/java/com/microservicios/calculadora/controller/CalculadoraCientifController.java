@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.websocket.server.PathParam;
+
 @RestController
 @RequestMapping("/calculadora-cientifica")
 public class CalculadoraCientifController {
@@ -27,7 +29,9 @@ public class CalculadoraCientifController {
         return interfazCalculaCientifService.getMultiplos(numero);
     }
 
-    //coseno de un ángulo en grados
+    /*
+     * @return El coseno de un ángulo medido en grados
+     */
     @GetMapping("/coseno/{numero}")
     public ResponseEntity getCoseno(@PathVariable String numero){
         return interfazCalculaCientifService.getCoseno(numero);
@@ -43,15 +47,14 @@ public class CalculadoraCientifController {
         return interfazCalculaCientifService.getAreaCir(radio);
     }
 
-    //EXTRA 1: volumen de una esfera
     @GetMapping("/volumen-esfera/{radio}")
     public ResponseEntity getVolumenEsf(@PathVariable String radio){
         return interfazCalculaCientifService.getVolumenEsf(radio);
     }
 
-    //EXTRA 2: ecuación cuadrática
-    @GetMapping("/ecuacion-cuadratica/{a}/{b}/{c}")
-    public ResponseEntity getEcuacionCuad(@PathVariable String a, @PathVariable String b, @PathVariable String c){
+    @GetMapping("/ecuacion-cuadratica")
+    public ResponseEntity getEcuacionCuad(@PathParam("a") String a, @PathParam("b") String b, @PathParam("c") String c){
         return interfazCalculaCientifService.getEcuacionCuad(a,b,c);
     }
+
 }
