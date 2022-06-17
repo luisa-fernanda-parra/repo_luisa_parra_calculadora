@@ -2,6 +2,7 @@ package com.microservicios.calculadora.controller;
 
 import com.microservicios.calculadora.dto.AutorDTO;
 import com.microservicios.calculadora.model.AutorEntity;
+import com.microservicios.calculadora.repository.AutorRepository;
 import com.microservicios.calculadora.services.IAutorService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

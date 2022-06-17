@@ -32,4 +32,6 @@ public interface AutorRepository extends JpaRepository<AutorEntity,Long> {
 
     AutorEntity findById(long id);
 
+    AutorEntity findByIdAndFechaEliminacionIsNull(long id);
+
 }
