@@ -6,26 +6,27 @@ import com.microservicios.calculadora.model.AutorEntity;
 import com.microservicios.calculadora.repository.AutorRepository;
 import com.microservicios.calculadora.services.IAutorService;
 import com.microservicios.calculadora.utilities.Validacion;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.List;
 import java.util.Objects;
 
+@AllArgsConstructor
 @Service
 public class AutorServiceImpl implements IAutorService {
 
     private AutorRepository autorRepository;
 
-    public AutorServiceImpl(AutorRepository autorRepository){
-        this.autorRepository = autorRepository;
-    }
-
     @Override
-    public ResponseEntity guardarAutor(AutorEntity autorEntity){
-        autorEntity.setFechaCreacion(new Date());
+    public ResponseEntity guardarAutor(AutorDTO autorDTO){
+        var autorEntity = AutorEntity.builder()
+                .nombre(autorDTO.getNombre())
+                .apellido(autorDTO.getApellido())
+                .fechaCreacion(new Date())
+                .build();
         AutorEntity autor = autorRepository.save(autorEntity);
         return ResponseEntity.ok(autor);
     }

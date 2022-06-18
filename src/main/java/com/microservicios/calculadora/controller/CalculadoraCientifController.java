@@ -1,6 +1,7 @@
 package com.microservicios.calculadora.controller;
 
 import com.microservicios.calculadora.services.InterfazCalculaCientifService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,15 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.websocket.server.PathParam;
 
+@AllArgsConstructor
 @RestController
 @RequestMapping("/calculadora-cientifica")
 public class CalculadoraCientifController {
 
     private final InterfazCalculaCientifService interfazCalculaCientifService;
-
-    public CalculadoraCientifController(InterfazCalculaCientifService interfazCalculaCientifService){
-        this.interfazCalculaCientifService = interfazCalculaCientifService;
-    }
 
     @GetMapping("/factorial/{numero}")
     public ResponseEntity getFactorial(@PathVariable String numero){

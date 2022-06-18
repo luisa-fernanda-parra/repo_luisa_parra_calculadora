@@ -1,27 +1,23 @@
 package com.microservicios.calculadora.controller;
 
 import com.microservicios.calculadora.dto.AutorDTO;
-import com.microservicios.calculadora.model.AutorEntity;
-import com.microservicios.calculadora.repository.AutorRepository;
 import com.microservicios.calculadora.services.IAutorService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
 
+@AllArgsConstructor
 @RestController
 @RequestMapping("/autor")
 public class AutorController {
 
     private final IAutorService iAutorService;
 
-    public AutorController(IAutorService iAutorService){
-        this.iAutorService = iAutorService;
-    }
-
     @PostMapping
-    public ResponseEntity guardarAutor(@RequestBody AutorEntity autorEntity) {
-        return iAutorService.guardarAutor(autorEntity);
+    public ResponseEntity guardarAutor(@RequestBody AutorDTO autorDTO) {
+        return iAutorService.guardarAutor(autorDTO);
     }
 
     @GetMapping("/listar-autores")

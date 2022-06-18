@@ -1,10 +1,12 @@
 package com.microservicios.calculadora.config;
 
+import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
+@Data
 @Component
 @ConfigurationProperties(prefix = "semillero")
 public class ConfigCalculadora {
@@ -47,22 +49,6 @@ public class ConfigCalculadora {
 
     public String getValorOperacion(String op){
         return calculadora.get(op);
-    }
-
-    public Map<String, String> getSaludo() {
-        return saludo;
-    }
-
-    public void setSaludo(Map<String, String> saludo) {
-        this.saludo = saludo;
-    }
-
-    public Map<String, String> getCalculadora() {
-        return calculadora;
-    }
-
-    public void setCalculadora(Map<String, String> calculadora) {
-        this.calculadora = calculadora;
     }
 
 }
