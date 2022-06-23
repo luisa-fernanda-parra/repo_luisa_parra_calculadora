@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CalculadoraServiceImpl implements InterfazCalculadoraService {
 
+    @Override
     public ResponseEntity getSuma(String num1, String num2){
         String mensaje = "";
         if(Validacion.esNumero(num1) && Validacion.esNumero(num2)){
@@ -20,6 +21,7 @@ public class CalculadoraServiceImpl implements InterfazCalculadoraService {
         return ResponseEntity.ok(mensaje);
     }
 
+    @Override
     public ResponseEntity getResta(String num1, String num2){
         String mensaje = "";
         if(Validacion.esNumero(num1) && Validacion.esNumero(num2)){
@@ -31,6 +33,7 @@ public class CalculadoraServiceImpl implements InterfazCalculadoraService {
         return ResponseEntity.ok(mensaje);
     }
 
+    @Override
     public ResponseEntity getMultiplicacion(String num1, String num2){
         String mensaje = "";
         if(Validacion.esNumero(num1) && Validacion.esNumero(num2)){
@@ -42,6 +45,7 @@ public class CalculadoraServiceImpl implements InterfazCalculadoraService {
         return ResponseEntity.ok(mensaje);
     }
 
+    @Override
     public ResponseEntity getDivision(String num1, String num2){
         String mensaje = "";
         if(Validacion.esNumero(num1) && Validacion.esNumero(num2)){
