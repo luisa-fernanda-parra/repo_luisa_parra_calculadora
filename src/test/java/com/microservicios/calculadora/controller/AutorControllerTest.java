@@ -30,7 +30,7 @@ public class AutorControllerTest {
 
     @Test
     void guardarAutorOK() throws Exception{
-        when(iAutorService.guardarAutor(any())).thenReturn(AutorEntitySample.getAutorEntity()); //lo que le estoy pasando
+        when(iAutorService.guardarAutor(any())).thenReturn(AutorEntitySample.getResponseEntityAutor()); //lo que le estoy pasando
 
         mvc.perform(post("/autor")
                         .content(objectToJson(AutorDTOSample.getRequestAutorDTO()))//tiene que ver con lo que le pasamos como parámetro
@@ -46,7 +46,7 @@ public class AutorControllerTest {
 
     @Test
     void listarAutoresOK() throws Exception{
-        when(iAutorService.listarAutores()).thenReturn(AutorEntitySample.getListaAutorEntity());
+        when(iAutorService.listarAutores()).thenReturn(AutorEntitySample.getResponseEntityListaAutor());
 
         mvc.perform(get("/autor/listar-autores")
                         .contentType(MediaType.APPLICATION_JSON))
@@ -63,7 +63,7 @@ public class AutorControllerTest {
 
     @Test
     void listarAutPorNombreNativeQueryOK() throws Exception{
-        when(iAutorService.listarAutPorNombreNativeQuery(anyString())).thenReturn(AutorEntitySample.getListaAutorEntity());
+        when(iAutorService.listarAutPorNombreNativeQuery(anyString())).thenReturn(AutorEntitySample.getResponseEntityListaAutor());
 
         mvc.perform(get("/autor/listar-autores-por-nombre/native-query/Paco")
                         .contentType(MediaType.APPLICATION_JSON))
@@ -80,7 +80,7 @@ public class AutorControllerTest {
 
     @Test
     void listarAutPorNombreJpqlOK() throws Exception{
-        when(iAutorService.listarAutPorNombreJpql(anyString())).thenReturn(AutorEntitySample.getListaAutorEntity());
+        when(iAutorService.listarAutPorNombreJpql(anyString())).thenReturn(AutorEntitySample.getResponseEntityListaAutor());
 
         mvc.perform(get("/autor/listar-autores-por-nombre/jpql/Paco")
                         .contentType(MediaType.APPLICATION_JSON))
@@ -97,7 +97,7 @@ public class AutorControllerTest {
 
     @Test
     void listarAutPorNombreJpaRepositoryOK() throws Exception{
-        when(iAutorService.listarAutPorNombreJpaRepository(anyString())).thenReturn(AutorEntitySample.getListaAutorEntity());
+        when(iAutorService.listarAutPorNombreJpaRepository(anyString())).thenReturn(AutorEntitySample.getResponseEntityListaAutor());
 
         mvc.perform(get("/autor/listar-autores-por-nombre/jpa-repository/Paco")
                         .contentType(MediaType.APPLICATION_JSON))
@@ -114,7 +114,7 @@ public class AutorControllerTest {
 
     @Test
     void listarAutPorFechaCNativeQueryOK() throws Exception{
-        when(iAutorService.listarAutPorFechaCNativeQuery(anyString())).thenReturn(AutorEntitySample.getListaAutorEntity());
+        when(iAutorService.listarAutPorFechaCNativeQuery(anyString())).thenReturn(AutorEntitySample.getResponseEntityListaAutor());
 
         mvc.perform(get("/autor/listar-autores-por-fecha-creacion/native-query/fecha")
                         .contentType(MediaType.APPLICATION_JSON))
@@ -131,7 +131,7 @@ public class AutorControllerTest {
 
     @Test
     void listarAutPorFechaCJpqlOK() throws Exception{
-        when(iAutorService.listarAutPorFechaCJpql(anyString(),anyString(),anyString())).thenReturn(AutorEntitySample.getListaAutorEntity());
+        when(iAutorService.listarAutPorFechaCJpql(anyString(),anyString(),anyString())).thenReturn(AutorEntitySample.getResponseEntityListaAutor());
 
         mvc.perform(get("/autor/listar-autores-por-fecha-creacion/jpql?year=2022&month=3&day=4")
                         .contentType(MediaType.APPLICATION_JSON))
@@ -148,7 +148,7 @@ public class AutorControllerTest {
 
     @Test
     void listarAutPorFechaCJpaRepositoryOK() throws Exception{
-        when(iAutorService.listarAutPorFechaCJpaRepository(anyString(),anyString(),anyString())).thenReturn(AutorEntitySample.getListaAutorEntity());
+        when(iAutorService.listarAutPorFechaCJpaRepository(anyString(),anyString(),anyString())).thenReturn(AutorEntitySample.getResponseEntityListaAutor());
 
         mvc.perform(get("/autor/listar-autores-por-fecha-creacion/jpa-repository?year=2022&month=3&day=4")
                         .contentType(MediaType.APPLICATION_JSON))
@@ -165,7 +165,7 @@ public class AutorControllerTest {
 
     @Test
     void listarAutPorIdNativeQueryOK() throws Exception{
-        when(iAutorService.listarAutPorIdNativeQuery(anyString())).thenReturn(AutorEntitySample.getListaAutorEntity());
+        when(iAutorService.listarAutPorIdNativeQuery(anyString())).thenReturn(AutorEntitySample.getResponseEntityListaAutor());
 
         mvc.perform(get("/autor/listar-autor-por-id/native-query/1")
                         .contentType(MediaType.APPLICATION_JSON))
@@ -182,7 +182,7 @@ public class AutorControllerTest {
 
     @Test
     void listarAutPorIdJpqlOK() throws Exception{
-        when(iAutorService.listarAutPorIdJpql(anyString())).thenReturn(AutorEntitySample.getListaAutorEntity());
+        when(iAutorService.listarAutPorIdJpql(anyString())).thenReturn(AutorEntitySample.getResponseEntityListaAutor());
 
         mvc.perform(get("/autor/listar-autor-por-id/jpql/1")
                         .contentType(MediaType.APPLICATION_JSON))
@@ -199,7 +199,7 @@ public class AutorControllerTest {
 
     @Test
     void listarAutPorIdJpaRepositoryOK() throws Exception{
-        when(iAutorService.listarAutPorIdJpaRepository(anyString())).thenReturn(AutorEntitySample.getListaAutorEntity());
+        when(iAutorService.listarAutPorIdJpaRepository(anyString())).thenReturn(AutorEntitySample.getResponseEntityListaAutor());
 
         mvc.perform(get("/autor/listar-autor-por-id/jpa-repository/1")
                         .contentType(MediaType.APPLICATION_JSON))

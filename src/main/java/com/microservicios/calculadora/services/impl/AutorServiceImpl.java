@@ -138,7 +138,7 @@ public class AutorServiceImpl implements IAutorService {
         return ResponseEntity.ok(mensaje);
     }
 
-    @Override
+    @Override//ACTUAL
     public ResponseEntity deleteLogic(Long id) {
         String mensaje;
         AutorEntity autorEntity = autorRepository.findByIdAndFechaEliminacionIsNull(id);
