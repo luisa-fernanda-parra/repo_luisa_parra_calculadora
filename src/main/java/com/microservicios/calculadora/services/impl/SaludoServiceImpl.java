@@ -2,7 +2,6 @@ package com.microservicios.calculadora.services.impl;
 
 import com.microservicios.calculadora.config.ConfigCalculadora;
 import com.microservicios.calculadora.constants.AppConstants;
-import com.microservicios.calculadora.providers.EmployeeProvider;
 import com.microservicios.calculadora.services.InterfazSaludoService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -15,8 +14,6 @@ import java.util.ArrayList;
 public class SaludoServiceImpl implements InterfazSaludoService {
 
     private final ConfigCalculadora configCalculadora;
-
-    private final EmployeeProvider employeeProvider;
 
     @Override
     public ResponseEntity getSaludo(String hora) {
