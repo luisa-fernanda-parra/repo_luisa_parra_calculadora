@@ -35,7 +35,7 @@ public class AutorServiceImplTest {
         verify(autorRepository, times(1)).save(any());
         assertNotNull(autorEntity);
         assertEquals("Paco", autorEntity.getNombre());
-        assertInstanceOf(AutorEntity.class, autorEntity);
+        assertTrue(autorEntity instanceof AutorEntity);
         assertEquals(200,responseEntity.getStatusCodeValue());
 
     }
@@ -147,7 +147,7 @@ public class AutorServiceImplTest {
         verify(autorRepository, times(1)).buscarPorIdNativeQuery(anyString());
         assertNotNull(autorEntity);
         assertEquals("Paco", autorEntity.getNombre());
-        assertInstanceOf(AutorEntity.class, autorEntity);
+        assertTrue(autorEntity instanceof AutorEntity);
         assertEquals(200,responseEntity.getStatusCodeValue());
 
     }
@@ -161,7 +161,7 @@ public class AutorServiceImplTest {
         verify(autorRepository, times(1)).buscarPorIdJpql(anyLong());
         assertNotNull(autorEntity);
         assertEquals("Paco", autorEntity.getNombre());
-        assertInstanceOf(AutorEntity.class, autorEntity);
+        assertTrue(autorEntity instanceof AutorEntity);
         assertEquals(200,responseEntity.getStatusCodeValue());
 
     }
@@ -175,7 +175,7 @@ public class AutorServiceImplTest {
         verify(autorRepository, times(1)).findById(anyLong());
         assertNotNull(autorEntity);
         assertEquals("Paco", autorEntity.getNombre());
-        assertInstanceOf(AutorEntity.class, autorEntity);
+        assertTrue(autorEntity instanceof AutorEntity);
         assertEquals(200,responseEntity.getStatusCodeValue());
 
     }
@@ -188,7 +188,7 @@ public class AutorServiceImplTest {
         verify(autorRepository, times(1)).findById(anyLong());
         assertNotNull(autorEntity);
         assertEquals("Paco", autorEntity.getNombre());
-        assertInstanceOf(AutorEntity.class, autorEntity);
+        assertTrue(autorEntity instanceof AutorEntity);
 
         when(autorRepository.save(any())).thenReturn(AutorEntitySample.getAutorEntity());
         AutorEntity autorEntity2 = autorRepository.save(AutorEntitySample.getAutorEntity());
@@ -196,7 +196,7 @@ public class AutorServiceImplTest {
         verify(autorRepository, times(1)).save(any());
         assertNotNull(autorEntity2);
         assertEquals("Paco", autorEntity2.getNombre());
-        assertInstanceOf(AutorEntity.class, autorEntity2);
+        assertTrue(autorEntity instanceof AutorEntity);
 
     }
 
@@ -208,7 +208,7 @@ public class AutorServiceImplTest {
         verify(autorRepository, times(1)).findById(anyLong());
         assertNotNull(autorEntity);
         assertEquals("Paco", autorEntity.getNombre());
-        assertInstanceOf(AutorEntity.class, autorEntity);
+        assertTrue(autorEntity instanceof AutorEntity);
 
     }
 
@@ -220,7 +220,7 @@ public class AutorServiceImplTest {
 
         verify(autorRepository, times(1)).findByIdAndFechaEliminacionIsNull(anyLong());
         assertNotNull(mensaje);
-        assertInstanceOf(String.class, mensaje);
+        assertTrue(mensaje instanceof String);
 
     }
 
